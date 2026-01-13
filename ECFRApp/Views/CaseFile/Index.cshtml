@@ -1,0 +1,57 @@
+@model IEnumerable<ECFRApp.Models.CaseFile>
+
+@{
+    ViewData["Title"] = "Case Files";
+}
+
+<h1>Electronic Case Filing Records</h1>
+
+<p>
+    <a asp-action="Create">Create New Case File</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Case Number
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Filing Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Filed By
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiledBy)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
